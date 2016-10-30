@@ -50,6 +50,11 @@ export default class Server {
       await this.serveStatic(req, res, p)
     })
 
+    this.router.get('/service-worker.js', async (req, res, params) => {
+      const p = join(this.dir, 'static', 'service-worker.js')
+      await this.serveStatic(req, res, p)
+    })
+
     this.router.get('/:path+.json', async (req, res) => {
       await this.renderJSON(req, res)
     })
